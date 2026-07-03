@@ -1,0 +1,16 @@
+<app-nav />
+<main>
+  <router-outlet />
+</main>
+<app-footer />
+
+<button
+  type="button"
+  class="tweaks-toggle"
+  title="Tweaks"
+  aria-label="Toggle visual tweaks"
+  (click)="theme.togglePanel()"
+>
+  🎨
+</button>
+<app-tweaks-panel />
