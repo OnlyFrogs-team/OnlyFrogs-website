@@ -43,12 +43,16 @@ import { ThemeService } from '../../services/theme.service';
             type="button"
             [class.selected]="theme.fontStyle() === 'classic'"
             (click)="theme.setFontStyle('classic')"
-          >Serif</button>
+          >
+            Serif
+          </button>
           <button
             type="button"
             [class.selected]="theme.fontStyle() === 'modern'"
             (click)="theme.setFontStyle('modern')"
-          >Sans</button>
+          >
+            Sans
+          </button>
         </div>
       </aside>
     }

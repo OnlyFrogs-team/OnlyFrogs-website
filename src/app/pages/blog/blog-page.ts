@@ -13,10 +13,18 @@ import { FrogIcon } from '../../shared/frog-icon/frog-icon';
       <header class="page-header">
         <p class="eyebrow">The Craft</p>
         <h1 [style.font-family]="theme.headingFont()">Tutorials & Lore</h1>
-        <p>Learn to make your own talismans. Written by the community, for the community, about frogs.</p>
+        <p>
+          Learn to make your own talismans. Written by the community, for the community, about
+          frogs.
+        </p>
       </header>
 
-      <article class="featured-post lift-card" (click)="openPost.set(posts[0])" tabindex="0" role="button">
+      <article
+        class="featured-post lift-card"
+        (click)="openPost.set(posts[0])"
+        tabindex="0"
+        role="button"
+      >
         <div class="thumbnail large">
           <app-frog-icon [size]="64" color="#3a3a6a" />
           <span>featured tutorial thumbnail</span>
@@ -24,7 +32,13 @@ import { FrogIcon } from '../../shared/frog-icon/frog-icon';
         <div>
           <div class="tag-row">
             <span class="tag featured">Featured</span>
-            <span class="tag" [style.color]="levelColor(posts[0].level)" [style.border-color]="levelColor(posts[0].level) + '55'" [style.background]="levelColor(posts[0].level) + '22'">{{ posts[0].level }}</span>
+            <span
+              class="tag"
+              [style.color]="levelColor(posts[0].level)"
+              [style.border-color]="levelColor(posts[0].level) + '55'"
+              [style.background]="levelColor(posts[0].level) + '22'"
+              >{{ posts[0].level }}</span
+            >
           </div>
           <h2 [style.font-family]="theme.headingFont()">{{ posts[0].title }}</h2>
           <p>{{ posts[0].excerpt }}</p>
@@ -34,19 +48,37 @@ import { FrogIcon } from '../../shared/frog-icon/frog-icon';
 
       <div class="chip-row">
         @for (level of levels; track level) {
-          <button type="button" class="chip" [class.active]="filter() === level" (click)="filter.set(level)">{{ level }}</button>
+          <button
+            type="button"
+            class="chip"
+            [class.active]="filter() === level"
+            (click)="filter.set(level)"
+          >
+            {{ level }}
+          </button>
         }
       </div>
 
       <div class="post-grid">
         @for (post of filteredPosts(); track post.id) {
-          <article class="post-card lift-card" (click)="openPost.set(post)" tabindex="0" role="button">
+          <article
+            class="post-card lift-card"
+            (click)="openPost.set(post)"
+            tabindex="0"
+            role="button"
+          >
             <div class="thumbnail">
               <app-frog-icon [size]="48" color="#2e2e52" />
               <span>tutorial thumbnail</span>
             </div>
             <div class="tag-row">
-              <span class="tag" [style.color]="levelColor(post.level)" [style.border-color]="levelColor(post.level) + '55'" [style.background]="levelColor(post.level) + '22'">{{ post.level }}</span>
+              <span
+                class="tag"
+                [style.color]="levelColor(post.level)"
+                [style.border-color]="levelColor(post.level) + '55'"
+                [style.background]="levelColor(post.level) + '22'"
+                >{{ post.level }}</span
+              >
               <span>{{ post.mins }} min read</span>
             </div>
             <h2 [style.font-family]="theme.headingFont()">{{ post.title }}</h2>
@@ -61,15 +93,30 @@ import { FrogIcon } from '../../shared/frog-icon/frog-icon';
 
       @if (openPost(); as post) {
         <div class="modal-host">
-          <button class="modal-backdrop" type="button" aria-label="Close tutorial" (click)="openPost.set(null)"></button>
+          <button
+            class="modal-backdrop"
+            type="button"
+            aria-label="Close tutorial"
+            (click)="openPost.set(null)"
+          ></button>
           <article class="modal-panel article-modal">
-            <button class="icon-button modal-close" type="button" (click)="openPost.set(null)">✕</button>
+            <button class="icon-button modal-close" type="button" (click)="openPost.set(null)">
+              ✕
+            </button>
             <div class="tag-row">
-              <span class="tag" [style.color]="levelColor(post.level)" [style.border-color]="levelColor(post.level) + '55'" [style.background]="levelColor(post.level) + '22'">{{ post.level }}</span>
+              <span
+                class="tag"
+                [style.color]="levelColor(post.level)"
+                [style.border-color]="levelColor(post.level) + '55'"
+                [style.background]="levelColor(post.level) + '22'"
+                >{{ post.level }}</span
+              >
               <span>{{ post.mins }} min read · by {{ post.author }} · {{ post.date }}</span>
             </div>
             <h2 [style.font-family]="theme.headingFont()">{{ post.title }}</h2>
-            <p>Welcome to this {{ post.level.toLowerCase() }}-level tutorial on "{{ post.title }}".</p>
+            <p>
+              Welcome to this {{ post.level.toLowerCase() }}-level tutorial on "{{ post.title }}".
+            </p>
             <h3 [style.font-family]="theme.headingFont()">What you'll need:</h3>
             <ul>
               <li>Size D or G crochet hook</li>
@@ -78,13 +125,25 @@ import { FrogIcon } from '../../shared/frog-icon/frog-icon';
               <li>Polyfill stuffing</li>
               <li>Tapestry needle + scissors</li>
             </ul>
-            <p>This tutorial covers the full process from magic ring to finishing. If your frog comes out looking slightly evil, that's normal — it's a feature, not a bug.</p>
+            <p>
+              This tutorial covers the full process from magic ring to finishing. If your frog comes
+              out looking slightly evil, that's normal — it's a feature, not a bug.
+            </p>
             <h3 [style.font-family]="theme.headingFont()">Step 1: The Magic Ring</h3>
-            <p>Make an adjustable loop with your yarn, leaving a 6-inch tail. Insert hook, pull up a loop, chain 1. This is your starting ring. Do not question it.</p>
+            <p>
+              Make an adjustable loop with your yarn, leaving a 6-inch tail. Insert hook, pull up a
+              loop, chain 1. This is your starting ring. Do not question it.
+            </p>
             <h3 [style.font-family]="theme.headingFont()">Step 2: Round 1</h3>
-            <p>Work 6 single crochets into the ring. Pull the tail to close. You now have a tiny disc. The frog begins.</p>
+            <p>
+              Work 6 single crochets into the ring. Pull the tail to close. You now have a tiny
+              disc. The frog begins.
+            </p>
             <h3 [style.font-family]="theme.headingFont()">Step 3: Increasing</h3>
-            <p>Round 2: 2 sc in each st around. Round 3: sc, 2sc in next st around. Continue until desired circumference is achieved.</p>
+            <p>
+              Round 2: 2 sc in each st around. Round 3: sc, 2sc in next st around. Continue until
+              desired circumference is achieved.
+            </p>
           </article>
         </div>
       }

@@ -21,13 +21,21 @@ type SortMode = 'featured' | 'price-asc' | 'price-desc' | 'rating';
       <header class="page-header">
         <p class="eyebrow">The Collection</p>
         <h1 [style.font-family]="theme.headingFont()">Talisman Shop</h1>
-        <p>Each frog is hand-crocheted and imbued with ambiguous magical intent. No refunds on prophecies.</p>
+        <p>
+          Each frog is hand-crocheted and imbued with ambiguous magical intent. No refunds on
+          prophecies.
+        </p>
       </header>
 
       <div class="toolbar">
         <div class="chip-row" aria-label="Talisman filters">
           @for (tag of allTags; track tag) {
-            <button type="button" class="chip" [class.active]="filter() === tag" (click)="filter.set(tag)">
+            <button
+              type="button"
+              class="chip"
+              [class.active]="filter() === tag"
+              (click)="filter.set(tag)"
+            >
               {{ tag }}
             </button>
           }
@@ -43,7 +51,16 @@ type SortMode = 'featured' | 'price-asc' | 'price-desc' | 'rating';
       <div class="product-grid">
         @for (talisman of filteredTalismans(); track talisman.id) {
           <article class="product-card lift-card">
-            <div class="product-visual" [style.background]="'radial-gradient(circle at 40% 40%, ' + talisman.color + '44, ' + talisman.color + '11)'">
+            <div
+              class="product-visual"
+              [style.background]="
+                'radial-gradient(circle at 40% 40%, ' +
+                talisman.color +
+                '44, ' +
+                talisman.color +
+                '11)'
+              "
+            >
               <app-frog-icon [size]="72" [color]="talisman.color" />
               @if (talisman.stock <= 2) {
                 <span class="stock-badge">ONLY {{ talisman.stock }} LEFT</span>
@@ -51,14 +68,26 @@ type SortMode = 'featured' | 'price-asc' | 'price-desc' | 'rating';
             </div>
             <div class="tag-row">
               @for (tag of talisman.tags; track tag) {
-                <span class="tag" [style.color]="tagColor(tag)" [style.border-color]="tagColor(tag) + '55'" [style.background]="tagColor(tag) + '22'">{{ tag }}</span>
+                <span
+                  class="tag"
+                  [style.color]="tagColor(tag)"
+                  [style.border-color]="tagColor(tag) + '55'"
+                  [style.background]="tagColor(tag) + '22'"
+                  >{{ tag }}</span
+                >
               }
             </div>
             <h2 [style.font-family]="theme.headingFont()">{{ talisman.name }}</h2>
-            <p class="rating"><span>{{ stars(talisman.rating) }}</span> {{ talisman.rating }} ({{ talisman.reviews }})</p>
+            <p class="rating">
+              <span>{{ stars(talisman.rating) }}</span> {{ talisman.rating }} ({{
+                talisman.reviews
+              }})
+            </p>
             <p>{{ talisman.desc }}</p>
             <footer class="card-footer">
-              <strong [style.font-family]="theme.headingFont()">{{ talisman.price | currency:'USD':'symbol':'1.2-2' }}</strong>
+              <strong [style.font-family]="theme.headingFont()">{{
+                talisman.price | currency: 'USD' : 'symbol' : '1.2-2'
+              }}</strong>
               <button type="button" class="soft-button" (click)="cart.addTalisman(talisman)">
                 {{ cart.hasItem(talismanId(talisman)) ? 'Add Another' : 'Add to Cart' }}
               </button>
@@ -81,7 +110,17 @@ export class ShopPage {
   readonly cartOpen = signal(false);
   readonly filter = signal('All');
   readonly sortBy = signal<SortMode>('featured');
-  readonly allTags = ['All', 'Luck', 'Wisdom', 'Protection', 'Mystery', 'Prophecy', 'Rare', 'Love', 'Peace'];
+  readonly allTags = [
+    'All',
+    'Luck',
+    'Wisdom',
+    'Protection',
+    'Mystery',
+    'Prophecy',
+    'Rare',
+    'Love',
+    'Peace',
+  ];
 
   readonly filteredTalismans = computed(() => {
     const filter = this.filter();

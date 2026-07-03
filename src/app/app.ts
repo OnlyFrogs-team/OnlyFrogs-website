@@ -10,7 +10,7 @@ import { TweaksPanel } from './shared/tweaks-panel/tweaks-panel';
   selector: 'app-root',
   imports: [Footer, Nav, RouterOutlet, TweaksPanel],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   readonly theme = inject(ThemeService);

@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
 
-test('migrated Angular app keeps the main OnlyFrogs routes and interactions working', async ({ page }) => {
+test('migrated Angular app keeps the main OnlyFrogs routes and interactions working', async ({
+  page,
+}) => {
   const consoleErrors: string[] = [];
   const externalConsultCalls: string[] = [];
 
@@ -39,12 +41,16 @@ test('migrated Angular app keeps the main OnlyFrogs routes and interactions work
   await page.getByRole('link', { name: 'Tutorials', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Tutorials & Lore' })).toBeVisible();
   await page.getByText('Read tutorial →').click();
-  await expect(page.locator('.article-modal').getByRole('heading', { name: /Your First Toad/i })).toBeVisible();
+  await expect(
+    page.locator('.article-modal').getByRole('heading', { name: /Your First Toad/i }),
+  ).toBeVisible();
   await page.locator('.article-modal .modal-close').click();
 
   await page.getByRole('link', { name: 'Community', exact: true }).click();
   await page.getByRole('button', { name: '+ New Thread' }).click();
-  await page.getByPlaceholder("What's on your mind? (frog-related, ideally)").fill('My frog learned Angular');
+  await page
+    .getByPlaceholder("What's on your mind? (frog-related, ideally)")
+    .fill('My frog learned Angular');
   await page.getByRole('button', { name: 'Post Thread' }).click();
   await expect(page.getByRole('heading', { name: 'My frog learned Angular' })).toBeVisible();
 

@@ -3,7 +3,13 @@ import { Component, input } from '@angular/core';
 @Component({
   selector: 'app-frog-icon',
   template: `
-    <svg [attr.width]="size()" [attr.height]="size()" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <svg
+      [attr.width]="size()"
+      [attr.height]="size()"
+      viewBox="0 0 100 100"
+      fill="none"
+      aria-hidden="true"
+    >
       <ellipse cx="50" cy="62" rx="30" ry="26" [attr.fill]="color()" />
       <ellipse cx="50" cy="42" rx="26" ry="22" [attr.fill]="color()" />
       <circle cx="34" cy="28" r="10" [attr.fill]="color()" />
@@ -16,7 +22,13 @@ import { Component, input } from '@angular/core';
       <circle cx="68" cy="25" r="1.5" fill="white" />
       <circle cx="45" cy="40" r="2" fill="rgba(0,0,0,0.3)" />
       <circle cx="55" cy="40" r="2" fill="rgba(0,0,0,0.3)" />
-      <path d="M 38 50 Q 50 58 62 50" stroke="rgba(0,0,0,0.3)" stroke-width="2" fill="none" stroke-linecap="round" />
+      <path
+        d="M 38 50 Q 50 58 62 50"
+        stroke="rgba(0,0,0,0.3)"
+        stroke-width="2"
+        fill="none"
+        stroke-linecap="round"
+      />
       <ellipse cx="24" cy="72" rx="9" ry="6" [attr.fill]="color()" transform="rotate(-20 24 72)" />
       <ellipse cx="76" cy="72" rx="9" ry="6" [attr.fill]="color()" transform="rotate(20 76 72)" />
       <ellipse cx="50" cy="60" rx="16" ry="14" fill="rgba(255,255,255,0.08)" />

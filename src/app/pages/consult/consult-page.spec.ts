@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vite-plus/test';
 
 import { ConsultPage } from './consult-page';
 
@@ -16,7 +16,8 @@ describe('ConsultPage', () => {
     fixture.debugElement.queryAll(By.css('.personality-card'))[0].nativeElement.click();
     fixture.detectChanges();
 
-    const textarea = fixture.debugElement.query(By.css('textarea')).nativeElement as HTMLTextAreaElement;
+    const textarea = fixture.debugElement.query(By.css('textarea'))
+      .nativeElement as HTMLTextAreaElement;
     textarea.value = 'Will my frog prosper?';
     textarea.dispatchEvent(new Event('input'));
     fixture.detectChanges();

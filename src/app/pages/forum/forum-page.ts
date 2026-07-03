@@ -26,34 +26,66 @@ const TAG_COLORS: Record<string, string> = {
           <h1 [style.font-family]="theme.headingFont()">Community Forum</h1>
           <p>Argue about yarn. Share your frogs. Ask for help. We're all here.</p>
         </div>
-        <button type="button" class="soft-button" (click)="showNew.set(!showNew())">+ New Thread</button>
+        <button type="button" class="soft-button" (click)="showNew.set(!showNew())">
+          + New Thread
+        </button>
       </header>
 
       @if (showNew()) {
         <form class="new-thread" (ngSubmit)="submitThread()">
           <h2 [style.font-family]="theme.headingFont()">Start a Thread</h2>
-          <input name="newTitle" [ngModel]="newTitle()" (ngModelChange)="newTitle.set($event)" placeholder="What's on your mind? (frog-related, ideally)">
+          <input
+            name="newTitle"
+            [ngModel]="newTitle()"
+            (ngModelChange)="newTitle.set($event)"
+            placeholder="What's on your mind? (frog-related, ideally)"
+          />
           <div class="chip-row">
             @for (tag of tagsWithoutAll; track tag) {
-              <button type="button" class="chip" [class.active]="newTag() === tag" (click)="newTag.set(tag)">{{ tag }}</button>
+              <button
+                type="button"
+                class="chip"
+                [class.active]="newTag() === tag"
+                (click)="newTag.set(tag)"
+              >
+                {{ tag }}
+              </button>
             }
           </div>
           <div class="action-row compact">
-            <button type="button" class="secondary-button" (click)="showNew.set(false)">Cancel</button>
+            <button type="button" class="secondary-button" (click)="showNew.set(false)">
+              Cancel
+            </button>
             <button type="submit" class="primary-button">Post Thread</button>
           </div>
         </form>
       }
 
       <dl class="forum-stats">
-        <div><dt [style.font-family]="theme.headingFont()">1,240</dt><dd>Members</dd></div>
-        <div><dt [style.font-family]="theme.headingFont()">8,900+</dt><dd>Posts</dd></div>
-        <div><dt [style.font-family]="theme.headingFont()">47</dt><dd>Active Today</dd></div>
+        <div>
+          <dt [style.font-family]="theme.headingFont()">1,240</dt>
+          <dd>Members</dd>
+        </div>
+        <div>
+          <dt [style.font-family]="theme.headingFont()">8,900+</dt>
+          <dd>Posts</dd>
+        </div>
+        <div>
+          <dt [style.font-family]="theme.headingFont()">47</dt>
+          <dd>Active Today</dd>
+        </div>
       </dl>
 
       <div class="chip-row">
         @for (tag of tags; track tag) {
-          <button type="button" class="chip" [class.active]="filter() === tag" (click)="filter.set(tag)">{{ tag }}</button>
+          <button
+            type="button"
+            class="chip"
+            [class.active]="filter() === tag"
+            (click)="filter.set(tag)"
+          >
+            {{ tag }}
+          </button>
         }
       </div>
 
@@ -63,7 +95,13 @@ const TAG_COLORS: Record<string, string> = {
             <div class="avatar">{{ post.avatar }}</div>
             <div>
               <div class="tag-row">
-                <span class="tag" [style.color]="tagColor(post.tag)" [style.border-color]="tagColor(post.tag) + '55'" [style.background]="tagColor(post.tag) + '22'">{{ post.tag }}</span>
+                <span
+                  class="tag"
+                  [style.color]="tagColor(post.tag)"
+                  [style.border-color]="tagColor(post.tag) + '55'"
+                  [style.background]="tagColor(post.tag) + '22'"
+                  >{{ post.tag }}</span
+                >
                 @if (post.hot) {
                   <span class="hot">🔥 Hot</span>
                 }
@@ -72,8 +110,15 @@ const TAG_COLORS: Record<string, string> = {
               <span>by {{ post.user }} · {{ post.time }}</span>
             </div>
             <div class="forum-meta">
-              <div><strong>{{ post.replies }}</strong><span>replies</span></div>
-              <button type="button" (click)="toggleLike(post, $event)" [class.liked]="likedIds().has(post.id)">
+              <div>
+                <strong>{{ post.replies }}</strong
+                ><span>replies</span>
+              </div>
+              <button
+                type="button"
+                (click)="toggleLike(post, $event)"
+                [class.liked]="likedIds().has(post.id)"
+              >
                 <span>{{ likedIds().has(post.id) ? '♥' : '♡' }}</span>
                 {{ likeCount(post) }}
               </button>
@@ -84,11 +129,22 @@ const TAG_COLORS: Record<string, string> = {
 
       @if (openPost(); as post) {
         <div class="modal-host">
-          <button class="modal-backdrop" type="button" aria-label="Close thread" (click)="openPost.set(null)"></button>
+          <button
+            class="modal-backdrop"
+            type="button"
+            aria-label="Close thread"
+            (click)="openPost.set(null)"
+          ></button>
           <article class="modal-panel thread-modal">
             <header>
               <div>
-                <span class="tag" [style.color]="tagColor(post.tag)" [style.border-color]="tagColor(post.tag) + '55'" [style.background]="tagColor(post.tag) + '22'">{{ post.tag }}</span>
+                <span
+                  class="tag"
+                  [style.color]="tagColor(post.tag)"
+                  [style.border-color]="tagColor(post.tag) + '55'"
+                  [style.background]="tagColor(post.tag) + '22'"
+                  >{{ post.tag }}</span
+                >
                 <h2 [style.font-family]="theme.headingFont()">{{ post.title }}</h2>
                 <p>by {{ post.user }} · {{ post.time }} · {{ post.replies }} replies</p>
               </div>
@@ -109,8 +165,16 @@ const TAG_COLORS: Record<string, string> = {
             </div>
 
             <form class="reply-form" (ngSubmit)="submitReply()">
-              <textarea name="reply" rows="3" [ngModel]="replyText()" (ngModelChange)="replyText.set($event)" placeholder="Share your frog wisdom…"></textarea>
-              <button type="submit" class="primary-button" [disabled]="!replyText().trim()">{{ submitted() ? '✓ Posted!' : 'Post Reply' }}</button>
+              <textarea
+                name="reply"
+                rows="3"
+                [ngModel]="replyText()"
+                (ngModelChange)="replyText.set($event)"
+                placeholder="Share your frog wisdom…"
+              ></textarea>
+              <button type="submit" class="primary-button" [disabled]="!replyText().trim()">
+                {{ submitted() ? '✓ Posted!' : 'Post Reply' }}
+              </button>
             </form>
           </article>
         </div>
@@ -120,7 +184,16 @@ const TAG_COLORS: Record<string, string> = {
 })
 export class ForumPage {
   readonly theme = inject(ThemeService);
-  readonly tags = ['All', 'Help', 'Haul', 'Testimonial', 'Supplies', 'Challenge', 'Off-Topic', 'Shipping'];
+  readonly tags = [
+    'All',
+    'Help',
+    'Haul',
+    'Testimonial',
+    'Supplies',
+    'Challenge',
+    'Off-Topic',
+    'Shipping',
+  ];
   readonly tagsWithoutAll = this.tags.filter((tag) => tag !== 'All');
   readonly filter = signal('All');
   readonly posts = signal<ForumPost[]>(ONLYFROGS_DATA.forumPosts);
@@ -169,7 +242,17 @@ export class ForumPage {
     const title = this.newTitle().trim();
     if (!title) return;
     this.posts.update((posts) => [
-      { id: Date.now(), user: 'You', avatar: '🐸', title, replies: 0, likes: 0, tag: this.newTag(), time: 'just now', hot: false },
+      {
+        id: Date.now(),
+        user: 'You',
+        avatar: '🐸',
+        title,
+        replies: 0,
+        likes: 0,
+        tag: this.newTag(),
+        time: 'just now',
+        hot: false,
+      },
       ...posts,
     ]);
     this.newTitle.set('');
@@ -179,7 +262,10 @@ export class ForumPage {
   submitReply(): void {
     const text = this.replyText().trim();
     if (!text) return;
-    this.replies.update((replies) => [...replies, { user: 'You', avatar: '🐸', time: 'just now', text }]);
+    this.replies.update((replies) => [
+      ...replies,
+      { user: 'You', avatar: '🐸', time: 'just now', text },
+    ]);
     this.replyText.set('');
     this.submitted.set(true);
   }

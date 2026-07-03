@@ -42,7 +42,11 @@ interface ConsultMessage {
 
       @if (selectedFrog(); as frog) {
         <article class="consult-chat" [style.border-color]="frog.color + '55'">
-          <header [style.background]="'linear-gradient(135deg, ' + frog.color + '22, ' + frog.color + '0a)'">
+          <header
+            [style.background]="
+              'linear-gradient(135deg, ' + frog.color + '22, ' + frog.color + '0a)'
+            "
+          >
             <app-frog-icon [size]="38" [color]="frog.color" />
             <div>
               <h2>{{ frog.name }}</h2>
@@ -82,7 +86,8 @@ interface ConsultMessage {
       }
 
       <p class="fine-print">
-        Frog advice is provided for entertainment purposes. OnlyFrogs is not liable for financial decisions made on the advice of crocheted amphibians.
+        Frog advice is provided for entertainment purposes. OnlyFrogs is not liable for financial
+        decisions made on the advice of crocheted amphibians.
       </p>
     </section>
   `,

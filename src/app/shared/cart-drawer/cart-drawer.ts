@@ -10,18 +10,25 @@ import { FrogIcon } from '../frog-icon/frog-icon';
   imports: [CurrencyPipe, FrogIcon],
   template: `
     @if (open()) {
-      <button class="drawer-backdrop" type="button" aria-label="Close cart" (click)="closed.emit()"></button>
+      <button
+        class="drawer-backdrop"
+        type="button"
+        aria-label="Close cart"
+        (click)="closed.emit()"
+      ></button>
       <aside class="cart-drawer" aria-label="Shopping cart">
         <header class="drawer-header">
           <h2 [style.font-family]="theme.headingFont()">Your Bag of Frogs</h2>
-          <button type="button" class="icon-button" aria-label="Close cart" (click)="closed.emit()">✕</button>
+          <button type="button" class="icon-button" aria-label="Close cart" (click)="closed.emit()">
+            ✕
+          </button>
         </header>
 
         <div class="drawer-body">
           @if (cart.items().length === 0) {
             <div class="empty-state">
               <app-frog-icon [size]="60" color="#2e2e52" />
-              <p>Your bag is empty.<br>The frogs are waiting.</p>
+              <p>Your bag is empty.<br />The frogs are waiting.</p>
             </div>
           } @else {
             @for (item of cart.items(); track item.id) {
@@ -31,7 +38,7 @@ import { FrogIcon } from '../frog-icon/frog-icon';
                 </div>
                 <div class="cart-copy">
                   <strong [style.font-family]="theme.headingFont()">{{ item.name }}</strong>
-                  <span>{{ item.price | currency:'USD':'symbol':'1.2-2' }}</span>
+                  <span>{{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}</span>
                 </div>
                 <div class="qty-controls">
                   <button type="button" (click)="cart.decrement(item.id)">−</button>
@@ -46,7 +53,9 @@ import { FrogIcon } from '../frog-icon/frog-icon';
         <footer class="drawer-footer">
           <div class="drawer-total">
             <span>Total</span>
-            <strong [style.font-family]="theme.headingFont()">{{ cart.total() | currency:'USD':'symbol':'1.2-2' }}</strong>
+            <strong [style.font-family]="theme.headingFont()">{{
+              cart.total() | currency: 'USD' : 'symbol' : '1.2-2'
+            }}</strong>
           </div>
           <button type="button" class="primary-button full-width">Proceed to Checkout →</button>
           <p>All frogs are ritually inspected before shipping.</p>

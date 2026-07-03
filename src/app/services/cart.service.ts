@@ -8,7 +8,9 @@ export class CartService {
 
   readonly items = this.itemState.asReadonly();
   readonly count = computed(() => this.items().reduce((sum, item) => sum + item.qty, 0));
-  readonly total = computed(() => this.items().reduce((sum, item) => sum + item.price * item.qty, 0));
+  readonly total = computed(() =>
+    this.items().reduce((sum, item) => sum + item.price * item.qty, 0),
+  );
 
   addTalisman(talisman: Talisman): void {
     this.upsert({
@@ -34,14 +36,14 @@ export class CartService {
 
   increment(id: string): void {
     this.itemState.update((items) =>
-      items.map((item) => item.id === id ? { ...item, qty: item.qty + 1 } : item),
+      items.map((item) => (item.id === id ? { ...item, qty: item.qty + 1 } : item)),
     );
   }
 
   decrement(id: string): void {
     this.itemState.update((items) =>
       items
-        .map((item) => item.id === id ? { ...item, qty: item.qty - 1 } : item)
+        .map((item) => (item.id === id ? { ...item, qty: item.qty - 1 } : item))
         .filter((item) => item.qty > 0),
     );
   }
@@ -57,7 +59,7 @@ export class CartService {
         return [...items, next];
       }
 
-      return items.map((item) => item.id === next.id ? { ...item, qty: item.qty + 1 } : item);
+      return items.map((item) => (item.id === next.id ? { ...item, qty: item.qty + 1 } : item));
     });
   }
 }

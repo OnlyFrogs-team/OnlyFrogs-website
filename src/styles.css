@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -134,7 +136,9 @@ textarea:focus {
   font-size: 0.875rem;
   font-weight: 600;
   padding: 0.4rem 0.85rem;
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
 }
 
 .nav-link:hover,
@@ -254,7 +258,11 @@ h3 {
   justify-content: center;
   line-height: 1;
   padding: 0.85rem 1.5rem;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, opacity 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    opacity 0.2s;
 }
 
 .primary-button {
@@ -321,7 +329,7 @@ h3 {
 }
 
 .ambient-left {
-  background: radial-gradient(circle, rgba(74,63,107,0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(74, 63, 107, 0.3) 0%, transparent 70%);
   height: 400px;
   left: 10%;
   top: 15%;
@@ -342,7 +350,7 @@ h3 {
 }
 
 .floating-frog span {
-  background: rgba(22,22,40,0.95);
+  background: rgba(22, 22, 40, 0.95);
   border: 1px solid var(--of-border);
   border-radius: 4px;
   color: var(--of-accent);
@@ -361,8 +369,13 @@ h3 {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-18px) rotate(3deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(3deg);
+  }
 }
 
 .page-header {
@@ -466,13 +479,17 @@ h3 {
   background: var(--of-panel);
   border: 1px solid var(--of-border);
   border-radius: 12px;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .lift-card:hover {
   background: var(--of-panel-strong);
   border-color: #4a3f6b;
-  box-shadow: 0 12px 40px rgba(74,63,107,0.3);
+  box-shadow: 0 12px 40px rgba(74, 63, 107, 0.3);
   transform: translateY(-3px);
 }
 
@@ -588,7 +605,7 @@ h3 {
 
 .drawer-backdrop,
 .modal-backdrop {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   border: 0;
   inset: 0;
   position: fixed;
@@ -599,7 +616,7 @@ h3 {
   background: var(--of-panel);
   border-left: 1px solid var(--of-border);
   bottom: 0;
-  box-shadow: -20px 0 60px rgba(0,0,0,0.5);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -1178,11 +1195,13 @@ h3 {
   color: inherit;
   padding: 1rem 0.75rem;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .personality-card.active {
-  box-shadow: 0 8px 24px rgba(126,202,195,0.18);
+  box-shadow: 0 8px 24px rgba(126, 202, 195, 0.18);
   transform: translateY(-2px);
 }
 
@@ -1209,7 +1228,7 @@ h3 {
   background: var(--of-panel);
   border: 1px solid;
   border-radius: 16px;
-  box-shadow: 0 0 60px rgba(90,138,74,0.08);
+  box-shadow: 0 0 60px rgba(90, 138, 74, 0.08);
   display: flex;
   flex-direction: column;
   height: 480px;
@@ -1373,7 +1392,7 @@ h3 {
   border: 1px solid var(--of-border);
   border-radius: 50%;
   bottom: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   display: flex;
   font-size: 1.2rem;
   height: 44px;
@@ -1389,7 +1408,7 @@ h3 {
   border: 1px solid #4a3f6b;
   border-radius: 14px;
   bottom: 1.5rem;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   padding: 1.25rem;
   position: fixed;
   right: 1.5rem;

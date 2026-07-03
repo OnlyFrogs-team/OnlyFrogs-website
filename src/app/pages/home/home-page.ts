@@ -10,10 +10,20 @@ import { FrogIcon } from '../../shared/frog-icon/frog-icon';
   template: `
     <section class="hero-section page-section">
       <div class="ambient ambient-left"></div>
-      <div class="ambient ambient-right" [style.background]="'radial-gradient(circle, ' + theme.accentColor() + '26 0%, transparent 70%)'"></div>
+      <div
+        class="ambient ambient-right"
+        [style.background]="
+          'radial-gradient(circle, ' + theme.accentColor() + '26 0%, transparent 70%)'
+        "
+      ></div>
 
       @for (frog of floatingFrogs; track frog.x + frog.y) {
-        <div class="floating-frog" [style.left]="frog.x" [style.top]="frog.y" [style.animation-delay]="frog.delay">
+        <div
+          class="floating-frog"
+          [style.left]="frog.x"
+          [style.top]="frog.y"
+          [style.animation-delay]="frog.delay"
+        >
           <app-frog-icon [size]="frog.size" [color]="frog.color" />
           <span>Frog</span>
         </div>
@@ -23,12 +33,12 @@ import { FrogIcon } from '../../shared/frog-icon/frog-icon';
         <app-frog-icon [size]="110" [color]="theme.accentColor()" />
         <p class="eyebrow">Handcrafted • Mystical • Slightly Unhinged</p>
         <h1 [style.font-family]="theme.headingFont()">
-          Your frog talisman<br>
+          Your frog talisman<br />
           <em>awaits in the bog.</em>
         </h1>
         <p class="hero-copy">
-          Hand-crocheted frog talismans of dubious magical provenance. Subscribe monthly,
-          browse our shop, learn the craft, and argue about yarn in the forum.
+          Hand-crocheted frog talismans of dubious magical provenance. Subscribe monthly, browse our
+          shop, learn the craft, and argue about yarn in the forum.
         </p>
         <div class="action-row">
           <a class="primary-button" routerLink="/shop">Browse Talismans →</a>

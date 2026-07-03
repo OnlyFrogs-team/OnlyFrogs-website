@@ -22,8 +22,8 @@ import { FrogIcon } from '../frog-icon/frog-icon';
           <a routerLink="/forum">forum</a>
         </nav>
         <p class="footer-note">
-          No frogs were harmed. All talismans are crocheted with love and mild obsession.
-          Mystical claims not verified by the FDA, USDA, or the Bog Council.
+          No frogs were harmed. All talismans are crocheted with love and mild obsession. Mystical
+          claims not verified by the FDA, USDA, or the Bog Council.
         </p>
       </div>
     </footer>

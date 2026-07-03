@@ -27,17 +27,35 @@ type BillingMode = 'monthly' | 'annual';
         <header class="page-header centered">
           <p class="eyebrow">Monthly Mystery</p>
           <h1 [style.font-family]="theme.headingFont()">Choose Your Tier</h1>
-          <p>Monthly boxes of hand-crocheted talismans, delivered straight from the bog to your door.</p>
+          <p>
+            Monthly boxes of hand-crocheted talismans, delivered straight from the bog to your door.
+          </p>
 
           <div class="segment-control" aria-label="Billing period">
-            <button type="button" [class.active]="billing() === 'monthly'" (click)="billing.set('monthly')">Monthly</button>
-            <button type="button" [class.active]="billing() === 'annual'" (click)="billing.set('annual')">Annual <span>Save 17%</span></button>
+            <button
+              type="button"
+              [class.active]="billing() === 'monthly'"
+              (click)="billing.set('monthly')"
+            >
+              Monthly
+            </button>
+            <button
+              type="button"
+              [class.active]="billing() === 'annual'"
+              (click)="billing.set('annual')"
+            >
+              Annual <span>Save 17%</span>
+            </button>
           </div>
         </header>
 
         <div class="pricing-grid">
           @for (tier of tiers; track tier.id) {
-            <article class="pricing-card" [class.popular]="tier.popular" [style.--tier-color]="tier.color">
+            <article
+              class="pricing-card"
+              [class.popular]="tier.popular"
+              [style.--tier-color]="tier.color"
+            >
               @if (tier.popular) {
                 <span class="popular-badge">🐸 Most Popular</span>
               }
@@ -45,18 +63,24 @@ type BillingMode = 'monthly' | 'annual';
               <h2 [style.font-family]="theme.headingFont()">{{ tier.name }}</h2>
               <p>{{ tier.tagline }}</p>
               <div class="price-line">
-                <strong [style.font-family]="theme.headingFont()">{{ displayPrice(tier.price) }}</strong>
+                <strong [style.font-family]="theme.headingFont()">{{
+                  displayPrice(tier.price)
+                }}</strong>
                 <span>{{ billing() === 'annual' ? '/yr' : '/mo' }}</span>
               </div>
               @if (billing() === 'annual') {
-                <p class="monthly-note">= {{ monthlyAnnualPrice(tier.price) }}/mo • 2 months free</p>
+                <p class="monthly-note">
+                  = {{ monthlyAnnualPrice(tier.price) }}/mo • 2 months free
+                </p>
               }
               <ul>
                 @for (perk of tier.perks; track perk) {
                   <li><span>✓</span>{{ perk }}</li>
                 }
               </ul>
-              <button type="button" (click)="selectTier(tier.id)">Start as {{ tier.name }} →</button>
+              <button type="button" (click)="selectTier(tier.id)">
+                Start as {{ tier.name }} →
+              </button>
             </article>
           }
         </div>
@@ -81,9 +105,20 @@ export class SubscriptionsPage {
   readonly confirmed = signal(false);
   readonly activeTier = computed(() => this.tiers.find((tier) => tier.id === this.selected()));
   readonly faqs = [
-    { question: 'Can I cancel anytime?', answer: 'Yes. The frogs will be sad, but they understand. No lock-in.' },
-    { question: 'What if I already own a frog?', answer: 'Every frog is unique. Duplicates are statistically improbable. Spiritually, however, welcome.' },
-    { question: 'Are the talismans actually magic?', answer: 'We cannot legally confirm this. We can legally say: many customers report unexpected good fortune.' },
+    {
+      question: 'Can I cancel anytime?',
+      answer: 'Yes. The frogs will be sad, but they understand. No lock-in.',
+    },
+    {
+      question: 'What if I already own a frog?',
+      answer:
+        'Every frog is unique. Duplicates are statistically improbable. Spiritually, however, welcome.',
+    },
+    {
+      question: 'Are the talismans actually magic?',
+      answer:
+        'We cannot legally confirm this. We can legally say: many customers report unexpected good fortune.',
+    },
   ];
 
   price(price: number): string {
